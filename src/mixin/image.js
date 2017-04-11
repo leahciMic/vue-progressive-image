@@ -13,12 +13,15 @@ export default {
     blur: {
       type: Number,
       required: false
+    },
+    noRatio: {
+      type: Boolean,
+      required: false
     }
   },
 
   data () {
     return {
-      applyRatio: true,
       options: {},
       defaultBlur: 5,
       image: null,
@@ -39,7 +42,7 @@ export default {
     },
 
     wrapperStyle () {
-      if (!this.applyRatio) {
+      if (this.noRatio) {
         return
       }
 
@@ -122,7 +125,7 @@ export default {
           this.defineAspectRatio(image)
         }
 
-        this.image = image.src
+        this.image = image.
 
         // Dispatches an event on image load
         this.$emit('onLoad', image.src)
