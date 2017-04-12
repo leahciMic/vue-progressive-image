@@ -1,6 +1,7 @@
 var webpack = require('webpack')
 var webpackDevConfig = require('./webpack.dev.config')
 var vue = require('./rules/vue')
+var babel = require('./rules/babel')
 var merge = require('webpack-merge')
 var CompressionPlugin = require("compression-webpack-plugin")
 var banner = require('./banner')
@@ -9,7 +10,7 @@ vue.options.cssModules.localIdentName = '[hash:5]'
 
 module.exports = merge.smart({}, webpackDevConfig, {
   module: {
-    rules: [vue]
+    rules: [vue, babel],
   },
   plugins: [
     new webpack.DefinePlugin({
